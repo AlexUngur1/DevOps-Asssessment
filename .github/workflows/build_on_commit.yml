@@ -53,8 +53,10 @@ name: Releases
 
 on: 
   push:
-    tags:
-    - '*'
+    branch:
+    - main
+    tags :
+     - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
 
