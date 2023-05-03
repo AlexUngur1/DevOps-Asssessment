@@ -16,6 +16,6 @@ jobs:
       - name: List files in the repository
         run: ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - uses: rymndhng/release-on-push-action@main
+      - uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: minor
