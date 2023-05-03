@@ -1,15 +1,30 @@
 name: GitHub Actions
 run-name: ${{ github.actor }} is running Github Action
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: rymndhng/release-on-push-action@main
+        with:
+          bump_version_scheme: minor
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - run: echo "Checking the code"
       - name: checkout repository code
         uses: actions/checkout@v3
       - name: List files in the repository
         run: ls ${{ github.workspace }}
-      - run: dotnet --version
-      - run: dotnet build
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - uses: rymndhng/release-on-push-action@main
+        with:
+          bump_version_scheme: minor
