@@ -1,9 +1,15 @@
 name: GitHub Actions
-run-name: ${{ github.actor }} is running Guthub Action
+run-name: ${{ github.actor }} is running Github Action
 on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Checking the code"
+      - name: checkout repository code
+        uses: actions/checkout@v3
+      - name: List files in the repository
+        run: ls ${{ github.workspace }}
+      - run: dotnet --version
       - run: dotnet build
       - run: echo "🍏 This job's status is ${{ job.status }}."
