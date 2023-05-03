@@ -4,15 +4,6 @@ on:
   push:
     branches:
       - main
-
-jobs:
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: rymndhng/release-on-push-action@main
-        with:
-          bump_version_scheme: minor
-
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
