@@ -22,9 +22,6 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: List files in the repository
-        run: ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:

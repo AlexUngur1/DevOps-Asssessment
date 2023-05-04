@@ -52,10 +52,6 @@ build {
         "Add-WindowsFeature WAS-ConfigurationAPI"
     ]
   }
-  provisioner "file" {
-  source = "./src/main.cs"
-  destination = "main.cs"
-}
   provisioner "windows-restart" {
   }
 }
