@@ -7,16 +7,26 @@ packer {
   }
 }
 
+locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
+
 variable "region" {
   type    = string
   default = "eu-central-1"
 }
 
 source "amazon-ebs" "app" {
-  ami_name      = "packer-windows-demo-20230503103444 {{timestamp}}"
+  ami_name      = "packer-windows-demo-${local.timestamp}"
   instance_type = "t2.micro"
   region        = "${var.region}"
-  source_ami    = "ami-0f0532c1b6e6abe57"
+  source_ami_filter {
+    filters = {
+      name                = "packer-windows-demo-20230503103444"
+      root-device-type    = "ebs"
+      virtualization-type = "hvm"
+    }
+    most_recent = true
+    owners      = ["444401948418"]
+  }
 }
 
 build {
