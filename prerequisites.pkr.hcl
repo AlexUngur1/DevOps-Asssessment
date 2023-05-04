@@ -14,9 +14,6 @@ variable "region" {
 
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
-# source blocks are generated from your builders; a source can be referenced in
-# build blocks. A build block runs provisioner and post-processors on a
-# source.
 source "amazon-ebs" "firstrun-windows" {
   ami_name      = "packer-windows-demo-${local.timestamp}"
   communicator  = "winrm"
@@ -36,7 +33,6 @@ source "amazon-ebs" "firstrun-windows" {
   winrm_username = "Administrator"
 }
 
-# a build block invokes sources and runs provisioning steps on them.
 build {
   name    = "learn-packer"
   sources = ["source.amazon-ebs.firstrun-windows"]
