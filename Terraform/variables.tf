@@ -15,4 +15,3 @@ variable "vm_image" {
   type        = string
   default     = "ami-0f2b1cec72092805c"
 }
-
