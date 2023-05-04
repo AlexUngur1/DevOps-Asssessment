@@ -36,7 +36,7 @@ build {
   ]
 
   provisioner "file" {
-    source      = "app/"
+    source      = "src/main.cs"
     destination = "C:\\inetpub\\wwwroot\\app"
   }
 
